@@ -1,11 +1,12 @@
-const express=require("express");
+const path = require("path");
+const express = require("express");
 
-const userRouter=express.Router();
+const rootdir = require("../utils/pathutils");
 
-userRouter.get("/",(req, res, next)=>{
-  res.send(`
-    <h1>welcome to the world</h1>
-    <a href="/host/add-home">Add Home</a>`);
+const userRouter = express.Router();
+
+userRouter.get("/", (req, res) => {
+    res.sendFile(path.join(rootdir, "views", "homePage.html"));
 });
 
-module.exports=userRouter;
+module.exports = userRouter;

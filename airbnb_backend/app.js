@@ -4,6 +4,8 @@ const express = require('express');
 //require routes
 const userRouter=require("./routes/userRouter");
 const hostRouter=require("./routes/hostRouter");
+const joinRouter=require("./routes/joinRouter");
+const contactRouter=require("./routes/contactRouter");
 
 const app=express();
 
@@ -14,8 +16,10 @@ const app=express();
 
 app.use(express.urlencoded({extended:true}));  // url encoded 
 
-app.use(userRouter);
-app.use(hostRouter);
+app.use('/',userRouter);
+app.use('/join',joinRouter);
+app.use('/add-home',hostRouter);
+app.use('/contact',contactRouter);
 
 app.use((req, res, next)=>{
   // res.send(`<h1>page not found 404 error</h1>`)
