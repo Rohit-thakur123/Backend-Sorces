@@ -12,6 +12,7 @@ const registeredHomes=[];
 // post request handleing for add-home form is moved to successRouter.js
 hostRouter.post('/',(req, res, next)=>{
   registeredHomes.push({
+    imageUrl:req.body.imageUrl,
     title:req.body.title,
     location:req.body.location,
     price:req.body.price

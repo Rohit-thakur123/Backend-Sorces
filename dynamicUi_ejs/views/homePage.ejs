@@ -23,9 +23,10 @@
     <div class="home-list">
         <% registeredHomes.forEach((home) => { %>
             <div class="home-card">
+                <img src="<%= home.imageUrl %>" alt="Home Image">
                 <h3><%= home.title %></h3>
                 <p>Location: <%= home.location %></p>
-                <p>Price per night: $<%= home.price %></p>
+                <p class="price">Price per night: $<%= home.price %></p>
                 <button class="book-btn">Book Now</button>
             </div>
         <% }); %>

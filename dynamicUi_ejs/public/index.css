@@ -47,19 +47,26 @@ nav a:hover {
 }
 
 #homes-section h2 {
+    text-align: center;
     margin-bottom: 20px;
     font-size: 28px;
 }
 
 /* Home Cards Layout */
 .home-list {
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
+    gap: 25px; */
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 /* Home Card */
 .home-card {
+    height: 400px;
+    width: 350px;
     border-radius: 12px;
     padding: 20px;
     background-color: #ffffff;
@@ -78,16 +85,14 @@ nav a:hover {
 }
 
 .home-card p {
-    font-size: 16px;
+    font-size: 20px;  
+    font-weight: bold;  
     margin-bottom: 6px;
-    color: #555;
+    color: #ff385c;
 }
 
 /* Price Highlight */
-.home-card p:last-child {
-    font-weight: bold;
-    color: #ff385c;
-}
+
 
 .home-image img {
     width: 100%;
@@ -115,5 +120,11 @@ nav a:hover {
 
 .book-btn:hover {
     background-color: #e0314b;
+}
+img {
+    width: 100%;
+    height: 60%;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
