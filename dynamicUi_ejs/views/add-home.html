@@ -35,11 +35,11 @@
 
 <h2>Add Your Home</h2>
 
-<form action="/">
-    <input type="text" placeholder="Home Title" required>
-    <input type="text" placeholder="Location" required>
-    <input type="number" placeholder="Price per night" required>
-    <textarea placeholder="Description"></textarea>
+<form action="/add-home" method="POST">
+    <input type="text" placeholder="Home Title" name="title" required>
+    <input type="text" placeholder="Location" name="location" required>
+    <input type="number" placeholder="Price per night" name="price" required>
+   
     <button type="submit">Add Home</button>
 </form>
 

@@ -1,0 +1,24 @@
+const path=require('path');
+const rootdir=require('../utils/pathutils');
+const express=require("express");
+
+const hostRouter=express.Router();  //make router 
+
+hostRouter.get('/',(req, res, next)=>{
+  res.sendFile(path.join(rootdir, 'views', 'add-home.html'));
+  
+});
+const registeredHomes=[];
+// post request handleing for add-home form is moved to successRouter.js
+hostRouter.post('/',(req, res, next)=>{
+  registeredHomes.push({
+    title:req.body.title,
+    location:req.body.location,
+    price:req.body.price
+  });
+  // console.log(registeredHomes);
+   res.sendFile(path.join(rootdir, 'views', 'success.html'));
+});
+
+
+module.exports={hostRouter, registeredHomes};

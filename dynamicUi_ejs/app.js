@@ -3,11 +3,15 @@
 const express = require('express');
 //require routes
 const userRouter=require("./routes/userRouter");
-const hostRouter=require("./routes/hostRouter");
-const joinRouter=require("./routes/joinRouter");
-const contactRouter=require("./routes/contactRouter");
+const {hostRouter}=require("./routes/hostRouter");
+// const {successRouter}=require("./routes/successRouter");
+
 
 const app=express();
+// for working with dynamic ui by using ejs
+app.set('view engine', 'ejs'); //set view engine
+app.set('views', 'views'); //set views folder
+
 const path=require('path');
 
 const rootdir=require('./utils/pathutils');
@@ -22,9 +26,8 @@ app.use(express.static(path.join(rootdir, 'public')));
 app.use(express.urlencoded({extended:true}));  // url encoded 
 
 app.use('/',userRouter);
-app.use('/join',joinRouter);
+// app.use('/success',successRouter);
 app.use('/add-home',hostRouter);
-app.use('/contact',contactRouter);
 
 app.use((req, res, next)=>{
   // res.send(`<h1>page not found 404 error</h1>`)
