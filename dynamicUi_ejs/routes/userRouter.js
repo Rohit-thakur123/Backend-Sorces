@@ -9,7 +9,9 @@ const userRouter = express.Router();
 userRouter.get("/", (req, res) => {
     console.log(registeredHomes);
     // res.sendFile(path.join(rootdir, "views", "homePage.html")); not work bc of ejs
-    res.render("homePage", { registeredHomes: registeredHomes });
+    res.render("homePage", { registeredHomes: registeredHomes, pageTitle: "Home Page" });
+    //partials ke liye pageTitle bhejna hoga 
+
 });
 
 module.exports = userRouter;
