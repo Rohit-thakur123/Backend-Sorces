@@ -15,7 +15,8 @@ module.exports=class HomeData{
     this.location=location;
     this.price=price;
   }
-  save(){
+  // before call back
+  /*save(){
     registeredHomes.push(this);    
     //inner line i mention for the file writing 
 
@@ -23,7 +24,20 @@ module.exports=class HomeData{
     fs.writeFile(homeDataPath, JSON.stringify(registeredHomes), error=>{
       console.log("all changes conclude: ", error);
     });
+  }*/
+
+    //after call back function by using call back pahale data padhenge agar koi home json file main hua to use dikha denge or saath main naya home bhi add kar denge
+  save(){
+    HomeData.fetchAll((registeredHomes)=>{
+      registeredHomes.push(this);   
+      const homeDataPath=path.join(rootdir, 'data', 'homes.json');
+      fs.writeFile(homeDataPath, JSON.stringify(registeredHomes), error=>{
+        console.log("all changes conclude: ", error);
+      });
+    })
+    
   }
+
   //here we use static bc i want to show data same to all 
   // idhar fetch all work nii karegi kyoki fetch all ke andar readfile ek andar async code hai jo ki  undefine de dega fetch all koi bhio value return nii kar payega
 

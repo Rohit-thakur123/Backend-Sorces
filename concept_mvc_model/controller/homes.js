@@ -1,12 +1,15 @@
 // homes se related controller functions yaha honge
 
 const HomeData = require("../models/homeData");
-
+//before call back function 
 exports.getAddhome=(req, res, next)=>{
   // res.sendFile(path.join(rootdir,'views','addHome.html'));
   res.render('add-home',{pageTitle:'Add Home'});
   
 }
+
+
+
 
 
 exports.postAddhome=(req, res, next)=>{
@@ -20,10 +23,20 @@ exports.postAddhome=(req, res, next)=>{
    res.render('success',{pageTitle:'Success'});
 }
 
-exports.userHome=(req, res, next) => {
+//work before call back added
+/*exports.userHome=(req, res, next) => {
     const registeredHomes=HomeData.fetchAll();
     // res.sendFile(path.join(rootdir, "views", "homePage.html")); not work bc of ejs
     res.render("homePage", { registeredHomes: registeredHomes, pageTitle: "Home Page" }); 
     //partials ke liye pageTitle bhejna hoga 
 
+}*/
+
+// after call back added
+exports.userHome=(req, res, next) => {
+    HomeData.fetchAll(registeredHomes=>{
+      res.render("homePage", { registeredHomes: registeredHomes, pageTitle: "Home Page" }); 
+    });
+    
 }
+
