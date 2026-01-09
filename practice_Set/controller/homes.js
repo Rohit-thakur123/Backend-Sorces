@@ -4,7 +4,7 @@ const HomeData = require("../models/homeData");
 //before call back function 
 exports.getAddhome=(req, res, next)=>{
   // res.sendFile(path.join(rootdir,'views','addHome.html'));
-  res.render('add-home',{pageTitle:'Add Home'});
+  res.render('host/add-home',{pageTitle:'Add Home'});
   
 }
 
@@ -20,7 +20,7 @@ exports.postAddhome=(req, res, next)=>{
   //jitna bvhi data hai sara sava 
   home.save();
   console.log(imageUrl, title, location, price);
-   res.render('success',{pageTitle:'Success'});
+   res.render('host/success',{pageTitle:'Success'});
 }
 
 //work before call back added
@@ -35,7 +35,7 @@ exports.postAddhome=(req, res, next)=>{
 // after call back added
 exports.userHome=(req, res, next) => {
     HomeData.fetchAll(registeredHomes=>{
-      res.render("homePage", { registeredHomes: registeredHomes, pageTitle: "Home Page" }); 
+      res.render("store/homePage", { registeredHomes: registeredHomes, pageTitle: "Home Page" }); 
     });
     
 } 
