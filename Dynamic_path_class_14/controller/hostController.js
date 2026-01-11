@@ -6,12 +6,7 @@ exports.getAddhome=(req, res, next)=>{
   // res.sendFile(path.join(rootdir,'views','addHome.html'));
   res.render('host/add-home',{pageTitle:'Add Home'});
   
-}
-
-    
-
-
-
+}      
 exports.postAddhome=(req, res, next)=>{
   //yaha par destructuring kar diya hai 
   const {imageUrl, title, location, price}=req.body;
@@ -23,20 +18,12 @@ exports.postAddhome=(req, res, next)=>{
    res.render('host/success',{pageTitle:'Success'});
 }
 
-//work before call back added
-/*exports.userHome=(req, res, next) => {
-    const registeredHomes=HomeData.fetchAll();
-    // res.sendFile(path.join(rootdir, "views", "homePage.html")); not work bc of ejs
-    res.render("homePage", { registeredHomes: registeredHomes, pageTitle: "Home Page" }); 
-    //partials ke liye pageTitle bhejna hoga 
 
-}*/
-
-// after call back added
-exports.userHome=(req, res, next) => {
-    HomeData.fetchAll(registeredHomes=>{
-      res.render("store/homePage", { registeredHomes: registeredHomes, pageTitle: "Home Page" }); 
+exports.hostHome = (req, res, next) => {
+  HomeData.fetchAll(registeredHomes => {
+    res.render("host/host-home-list", {
+      registeredHomes,
+      pageTitle: "Host Home Page"
     });
-    
-} 
-  
+  });
+};

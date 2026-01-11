@@ -3,9 +3,12 @@
 <!-- include nav by using partials as like component -->
 <%- include('../partials/nav') %>
 
-
+<div class="hero">
+    <h1>Welcome to Airbnb</h1>
+    <p>Book unique places to stay and experience the world.</p>
+</div>
 <div id="homes-section">
-    <h2>Favourites Home</h2>
+    <h2>Available Homes</h2>
     <div class="home-list">
         <% registeredHomes.forEach((home) => { %>
             <div class="home-card">
@@ -13,7 +16,8 @@
                 <h3><%= home.title %></h3>
                 <p>Location: <%= home.location %></p>
                 <p class="price">Price per night: $<%= home.price %></p>
-                <button class="book-btn">Remove</button>
+                <a href="/homes/<%= home.id %>">Details</a>
+                <button class="book-btn">Book Now</button>
             </div>
         <% }); %>
     </div> 
