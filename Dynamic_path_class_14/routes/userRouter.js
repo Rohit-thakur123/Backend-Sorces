@@ -8,4 +8,8 @@ userRouter.get("/bookings", userController.bookingHome);
 
 userRouter.get("/favourite-list",userController.favouriteHome);
 
+userRouter.post('/favourite-list/:homeId', userController.postAddToFavourites);
+
+userRouter.get('/homes/:homeId', userController.getHomeDetails);
+
 module.exports = userRouter;  

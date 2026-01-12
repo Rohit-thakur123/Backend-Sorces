@@ -1,0 +1,41 @@
+<!-- Header -->
+<%- include('../partials/header') %>
+
+<!-- Navbar -->
+<%- include('../partials/nav') %>
+
+<main class="home-details-container">
+
+  <h2 class="page-title">Home Details</h2>
+
+  <section class="home-details-card">
+
+    <div class="image-box">
+      <img src="<%= home.imageUrl %>" alt="Home Image">
+    </div>
+
+    <div class="details-box">
+      <h3><%= home.title %></h3>
+
+      <p class="location">
+        📍 <%= home.location %>
+      </p>
+
+      <p class="price">
+        ₹ <%= home.price %> / night
+      </p>
+
+      <div class="action-buttons">
+        <button class="book-btn">Book Now</button>        
+      </div>
+      <form action="/favourite-list/<%= home.id %>" method="POST">
+          <button type="submit" class="fav-btn">Add to Favourite</button>
+        </form>
+    </div>
+
+  </section>
+
+</main>
+
+</body>
+</html>

@@ -63,4 +63,12 @@ module.exports=class HomeData{
       callback(!err ? JSON.parse(data) : []);
     })
   }   
+
+  //new method for getting single home by id
+  static findById(homeId, callback){
+    HomeData.fetchAll((registeredHomes)=>{
+      const home= registeredHomes.find(home=> home.id===homeId);
+      callback(home);
+    });
+  }
 }   
