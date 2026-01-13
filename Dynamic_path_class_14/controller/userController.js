@@ -49,4 +49,4 @@ exports.postAddToFavourites = (req, res, next) => {
     }
     res.redirect('/favourite-list');
   });  
-} 
+}  
