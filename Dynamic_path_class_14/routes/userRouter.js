@@ -10,6 +10,6 @@ userRouter.get("/favourite-list",userController.favouriteHome);
 
 userRouter.post('/favourite-list/:homeId', userController.postAddToFavourites);
 
-userRouter.get('/homes/:homeId', userController.getHomeDetails);
+userRouter.get('/homes/:homeId', userController.getHomeDetails); //this is the dynamin path format :homeId 
 
 module.exports = userRouter;  

@@ -15,13 +15,13 @@ exports.bookingHome=(req, res, next) => {
 }
 
 exports.getHomeDetails = (req, res, next) => {
-  const homeId = req.params.homeId; 
+  const homeId = req.params.homeId; //to find the homeid from url 
   HomeData.findById(homeId, homedetails=>{
     if (!homedetails) {
       res.redirect('/');
       return;
     }
-    console.log("home details", homedetails);
+    // console.log("home details", homedetails);
     res.render("store/home-details", {pageTitle: "Home Details", home: homedetails });
   })
  

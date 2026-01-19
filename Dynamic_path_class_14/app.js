@@ -8,7 +8,7 @@ const hostRouter = require("./routes/hostRouter");
 // error controller
 const { pagenotfound } = require('./controller/errors');
 
-const path = require('path');
+const path = require('path');  
 const rootdir = require('./utils/pathutils');
 
 const app = express();

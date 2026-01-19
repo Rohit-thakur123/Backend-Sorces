@@ -22,4 +22,4 @@ module.exports=class FavouriteData{
       callback(err ? [] : JSON.parse(fileContent));
     });
   }
-}
+} 

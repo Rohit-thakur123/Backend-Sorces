@@ -7,7 +7,7 @@ const path=require('path');
 const rootdir=require('../utils/pathutils');
 //registered homes are push here
 let registeredHomes=[];
-
+const homeDataPath=path.join(rootdir, 'data', 'homes.json');
 module.exports=class HomeData{ 
   constructor(imageUrl, title, location, price){
     this.imageUrl=imageUrl; 
@@ -31,7 +31,7 @@ module.exports=class HomeData{
     this.id=Math.random().toString();
     HomeData.fetchAll((registeredHomes)=>{
       registeredHomes.push(this);   
-      const homeDataPath=path.join(rootdir, 'data', 'homes.json');
+      // const homeDataPath=path.join(rootdir, 'data', 'homes.json');
       fs.writeFile(homeDataPath, JSON.stringify(registeredHomes), error=>{
         console.log("all changes conclude: ", error);
       });
@@ -57,7 +57,7 @@ module.exports=class HomeData{
     //idhar hum call back dedenge 
   static fetchAll(callback){
     // here i want to read data from the data file  
-    const homeDataPath=path.join(rootdir, 'data', 'homes.json');
+    // const homeDataPath=path.join(rootdir, 'data', 'homes.json');
     fs.readFile(homeDataPath, (err, data)=>{
       console.log("file read: ",err, data);
       callback(!err ? JSON.parse(data) : []);
