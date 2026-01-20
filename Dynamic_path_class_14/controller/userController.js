@@ -1,6 +1,6 @@
 // homes se related controller functions yaha honge
 
-const FavouriteData = require("../models/favouriteData");
+const FavouriteData = require("../models/FavouriteData");
 const HomeData = require("../models/homeData");
 
 exports.userHome=(req, res, next) => {

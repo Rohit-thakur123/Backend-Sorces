@@ -1,0 +1,23 @@
+<!-- add new home -->
+
+<!-- include header by using partials -->
+<%- include('../partials/header') %> 
+<!-- include nav by using partials as like component -->
+<%- include('../partials/nav') %>
+
+<h2 style="text-align: center; margin: 20px;"><%= editing ? 'Edit Your Home' : 'Add Your Home' %></h2>
+
+<form action="/host/<%= editing ? 'edit-home' : 'add-home' %>" method="POST">
+    <!-- is input se hum id store kar sakte hai  -->
+    <input type="hidden" name="homeId" value="<%= editing ? home.id : '' %>">
+
+    <input type="url" placeholder="upload home image" name="imageUrl" value="<%= editing ? home.imageUrl : '' %>" required>
+    <input type="text" placeholder="Home Title" name="title" value="<%= editing ? home.title : '' %>" required>
+    <input type="text" placeholder="Location" name="location" value="<%= editing ? home.location : '' %>" required>
+    <input type="number" placeholder="Price per night" name="price" value="<%= editing ? home.price : '' %>" required>
+   
+    <button type="submit" value="<%= editing ? 'update Home' : 'Add Home'%>">Add Home</button>
+</form>
+</body>
+</html>
+

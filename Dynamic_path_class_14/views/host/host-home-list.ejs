@@ -16,8 +16,14 @@
                 <h3><%= home.title %></h3>
                <p>Location: <%= home.location %></p>
                 <p class="price">Price per night: $<%= home.price %></p>
-                <button class="book-btn" style="background-color: rgb(48, 233, 48);">Edit</button>
-                <button class="book-btn" style="background-color: rgb(233, 71, 71);">Delete</button>
+                <!-- edit home se pahale ha -->
+                <!-- <button class="book-btn" style="background-color: rgb(48, 233, 48);">Edit</button> -->
+                 <a href="/host/edit-home/<%=home.id %>?editing=true" class="book-btn" style="background-color: rgb(48, 233, 48);">Edit</a>
+
+                <form action="/host/delete-home/<%=home.id %>" method="POST">
+
+                    <button class="book-btn" style="background-color: rgb(233, 71, 71);">Delete</button>
+                </form>
             </div>
         <% }); %>
     </div> 

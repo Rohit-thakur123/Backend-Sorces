@@ -5,6 +5,7 @@
 const fs=require('fs');
 const path=require('path');
 const rootdir=require('../utils/pathutils');
+const { register } = require('module');
 //registered homes are push here
 let registeredHomes=[];
 const homeDataPath=path.join(rootdir, 'data', 'homes.json');
@@ -27,10 +28,19 @@ module.exports=class HomeData{
   }*/
 
     //after call back function by using call back pahale data padhenge agar koi home json file main hua to use dikha denge or saath main naya home bhi add kar denge
-  save(){
-    this.id=Math.random().toString();
+  save(){   
     HomeData.fetchAll((registeredHomes)=>{
-      registeredHomes.push(this);   
+      if(this.id){//edit home case
+        registeredHomes= registeredHomes.map(home=>{
+          if(home.id===this.id){
+            return this;
+          }
+          return home;
+        });
+      }else{
+        this.id=Math.random().toString();
+        registeredHomes.push(this);   
+      }
       // const homeDataPath=path.join(rootdir, 'data', 'homes.json');
       fs.writeFile(homeDataPath, JSON.stringify(registeredHomes), error=>{
         console.log("all changes conclude: ", error);
@@ -71,4 +81,12 @@ module.exports=class HomeData{
       callback(home);
     });
   }
-}   
+
+  //method to delete home by id
+  static deleteById(homeId, callback){
+    HomeData.fetchAll(registeredHomes=>{
+      const updatedHomes= registeredHomes.filter(home=> home.id!==homeId);  
+      fs.writeFile(homeDataPath, JSON.stringify(updatedHomes),callback);
+    });    
+  }
+}
