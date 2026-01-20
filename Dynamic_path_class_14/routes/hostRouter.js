@@ -4,7 +4,7 @@ const hostController = require('../controller/hostController');
 
 hostRouter.get('/add-home', hostController.getAddhome);
 hostRouter.post('/add-home', hostController.postAddhome);
-hostRouter.get('/host-home-list', hostController.hostHome);
+hostRouter.get('/host-home-list', hostController.hostHome); 
 hostRouter.get('/edit-home/:homeId', hostController.getEditHome);
 
 hostRouter.post('/edit-home', hostController.postEditHome);
