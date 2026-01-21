@@ -50,3 +50,14 @@ exports.postAddToFavourites = (req, res, next) => {
     res.redirect('/favourite-list');
   });  
 }  
+
+//method to delete favorite home
+exports.postDeleteFavourite=(req, res, next)=>{
+  const homeId = req.params.homeId;
+  FavouriteData.deleteById(homeId, error=>{
+    if (error) {
+      console.log("Error deleting home: ", error);
+    }
+    res.redirect('/favourite-list');
+  });
+}

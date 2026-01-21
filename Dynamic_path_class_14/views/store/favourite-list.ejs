@@ -14,7 +14,7 @@
                 <h3><%= home.title %></h3>
                 <p>Location: <%= home.location %></p>
                 <p class="price">Price per night: $<%= home.price %></p>
-                <form action="/host/delete-favourite/<%=home.id%>" method="POST">
+                <form action="/delete-favourite/<%=home.id%>" method="POST">
                     <button class="book-btn remove_btn">Remove</button>
                 </form>
             </div>
