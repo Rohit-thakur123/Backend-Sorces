@@ -17,7 +17,12 @@ exports.postAddhome=(req, res, next)=>{
   //yaha par class ko call kar liya hai 
   const home=new HomeData(imageUrl, title, location, price);
   //jitna bvhi data hai sara sava 
-  home.save();
+  home.save().then(()=>{
+    console.log("home added");
+  }).catch(err=>{
+    console.log("error in adding home", err);
+  });
+  
   res.redirect('/host/host-home-list');
 }
 

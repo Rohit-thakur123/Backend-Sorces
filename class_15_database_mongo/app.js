@@ -10,6 +10,7 @@ const { pagenotfound } = require('./controller/errors');
 
 const path = require('path');  
 const rootdir = require('./utils/pathutils');
+const {mongoConnect} = require('./utils/databaseUtils');
 
 const app = express();
 
@@ -30,7 +31,9 @@ app.use(pagenotfound);
 
 // server
 const PORT = 3001;
-app.listen(PORT, () => {
-  console.log("server at http://localhost:3001");
-});
- 
+mongoConnect((client) => {
+  console.log(client);
+  app.listen(PORT, () => {
+    console.log("server at http://localhost:3001");
+  }); 
+})
